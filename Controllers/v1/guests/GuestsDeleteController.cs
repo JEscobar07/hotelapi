@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using hotelapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -17,6 +18,7 @@ namespace hotelapi.Controllers.v1.guests
         }
 
         [HttpDelete("guests/{id}")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "Delete a guest by id",
             Description = "Delete a guest by id from the database."

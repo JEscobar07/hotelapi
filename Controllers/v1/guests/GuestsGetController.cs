@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using hotelapi.Models;
 using hotelapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -18,6 +19,7 @@ namespace hotelapi.Controllers.v1.guests
         }
 
         [HttpGet("guests")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "guests",
             Description = "see all guests in the hotel."
@@ -35,6 +37,7 @@ namespace hotelapi.Controllers.v1.guests
         }
 
         [HttpGet("guests/{id}")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "guest by id",
             Description = "see a guest by id."
@@ -52,6 +55,7 @@ namespace hotelapi.Controllers.v1.guests
         }
 
         [HttpGet("guests/search/{keyword}")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "guests by keyword",
             Description = "see guests by their keyword."

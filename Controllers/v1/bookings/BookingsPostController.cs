@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using hotelapi.DTOs;
 using hotelapi.Models;
 using hotelapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -19,6 +20,7 @@ namespace hotelapi.Controllers.v1.bookings
         }
 
         [HttpPost("bookings")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "Create a new booking",
             Description = "This endpoint allows you to create a new booking in the database"

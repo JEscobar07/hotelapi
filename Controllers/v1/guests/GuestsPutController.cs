@@ -2,6 +2,7 @@
 using hotelapi.DTOs;
 using hotelapi.Models;
 using hotelapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -16,6 +17,7 @@ namespace hotelapi.Controllers.v1.guests
         }
 
         [HttpPut("guests/{id}")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "Update a guest",
             Description = "This endpoint allows you to update a guest in the database")]

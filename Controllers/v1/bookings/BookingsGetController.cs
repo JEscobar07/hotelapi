@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using hotelapi.Models;
 using hotelapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -18,6 +19,7 @@ namespace hotelapi.Controllers.v1.bookings
         }
 
         [HttpGet("bookings/search/{identification_number}")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "bookings by identification number",
             Description = "see bookings by their identification number."
@@ -35,6 +37,7 @@ namespace hotelapi.Controllers.v1.bookings
         }
 
         [HttpGet("bookings/{id}")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "booking by id",
             Description = "see a booking by id."

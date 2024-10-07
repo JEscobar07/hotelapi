@@ -54,8 +54,8 @@ namespace hotelapi.Controllers.v1.rooms
             return Ok(status);
         }
 
-        [HttpGet]
-        // [Authorize]
+        [HttpGet("rooms")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "all rooms",
             Description = "Return all rooms"
@@ -72,8 +72,8 @@ namespace hotelapi.Controllers.v1.rooms
             return Ok(rooms);
         }
 
-        [HttpGet("{id}")]
-        // [Authorize]
+        [HttpGet("rooms/{id}")]
+        [Authorize]
         [SwaggerOperation(
             Summary = "room by id",
             Description = "Return a room by id"
@@ -91,7 +91,7 @@ namespace hotelapi.Controllers.v1.rooms
         }
 
         [HttpGet("occupied")]
-        // [Authorize]
+        [Authorize]
         [SwaggerOperation(
             Summary = "busy rooms",
             Description = "Each employee can see which rooms are currently occupied")]

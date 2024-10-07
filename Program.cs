@@ -23,11 +23,6 @@ var conectionDB = $"server={dbHost};port={dbPort};database={dbDatabaseName};uid=
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(conectionDB, ServerVersion.Parse("8.0.20-mysql")));
 
-// ACA AGREGAMOS EL SERVICIO QUE NOS PERMITE TRABAJAR
-builder.Services.AddScoped<IRoomRepository, RoomServices>();
-builder.Services.AddScoped<IRoomTypesRepository, RoomTypeServices>();
-builder.Services.AddScoped<IGuestRepository, GuestServices>();
-builder.Services.AddScoped<IBookingRepository, BookingServices>();
 
 //Hasheo
 builder.Services.AddSingleton<Utilies>();
@@ -57,10 +52,18 @@ builder.Services.AddAuthentication(config =>
 // Add services to the container.
 
 builder.Services.AddControllers();
+// ACA AGREGAMOS EL SERVICIO QUE NOS PERMITE TRABAJAR
+builder.Services.AddScoped<IRoomRepository, RoomServices>();
+builder.Services.AddScoped<IRoomTypesRepository, RoomTypeServices>();
+builder.Services.AddScoped<IGuestRepository, GuestServices>();
+builder.Services.AddScoped<IBookingRepository, BookingServices>();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
     {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hotel API", Version = "v1" });
         // Customize Swagger UI settings here.
         c.EnableAnnotations();
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -75,17 +78,17 @@ builder.Services.AddSwaggerGen(c =>
         c.AddSecurityRequirement(new OpenApiSecurityRequirement
         {
             {
-                new OpenApiSecurityScheme
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
                 {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
-                },
-                new string[] {}
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
             }
-        });
+    });
     }
 );
 
