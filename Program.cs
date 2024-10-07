@@ -108,9 +108,8 @@ app.UseWelcomePage(new WelcomePageOptions
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
