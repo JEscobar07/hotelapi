@@ -17,17 +17,7 @@ namespace hotelapi.Services
         {
             context = _context;
         }
-
-        public Task Add(Room room)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public async Task<IEnumerable<Room>> GetAvailable()
         {
             return await context.Rooms.Include(r => r.RoomType).Where(r => r.Availability == true).ToListAsync();

@@ -11,7 +11,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace hotelapi.Controllers.v1.roomTypes
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/roomTypes/[controller]")]
     public class RoomTypesGetController : RoomTypesController
     {
         public RoomTypesGetController(IRoomTypesRepository _roomTypesRepository) : base(_roomTypesRepository)

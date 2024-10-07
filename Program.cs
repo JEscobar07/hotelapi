@@ -22,7 +22,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // ACA AGREGAMOS EL SERVICIO QUE NOS PERMITE TRABAJAR
 builder.Services.AddScoped<IRoomRepository, RoomServices>();
 builder.Services.AddScoped<IRoomTypesRepository, RoomTypeServices>();
-
+builder.Services.AddScoped<IGuestRepository, GuestServices>();
 // Add services to the container.
 
 builder.Services.AddControllers();

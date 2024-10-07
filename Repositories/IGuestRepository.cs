@@ -12,8 +12,8 @@ namespace hotelapi.Repositories
         public Task<IEnumerable<Guest>> GetAll();
         public Task<Guest> GetId(int id);
         public Task<bool> Delete(int id);
-        public Task<Guest> Getkeyword(string keyword);
+        public Task<IEnumerable<Guest>> Getkeyword(string keyword);
         public Task<Guest> Update(int id, Guest guest);
-
+        public Task<bool> CheckExistence(string identication_number);
     }
 }

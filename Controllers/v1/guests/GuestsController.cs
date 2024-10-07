@@ -2,19 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using hotelapi.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hotelapi.Controllers.v1.guests
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/guests/[controller]")]
     public class GuestsController : ControllerBase
     {
-        protected readonly IRoomRepository roomRepository;
+        protected readonly IGuestRepository GuestRepository;
 
-        public RoomsController(IRoomRepository _roomRepository)
+        public GuestsController(IGuestRepository _GuestRepository)
         {
-            roomRepository = _roomRepository;
+            GuestRepository = _GuestRepository;
         }
     }
 }
