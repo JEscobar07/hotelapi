@@ -8,9 +8,10 @@ namespace hotelapi.Repositories
 {
     public interface IRoomRepository
     {
-        public Task Add(Room product);
-        public Task<Room> Update(int id, Room product);
-        public Task<bool> Delete(int id);
         public Task<IEnumerable<Room>> GetAvailable();
+        public Task<object> GetStatusCountRooms(); 
+        public Task<IEnumerable<Room>> GetAll();
+        public Task<Room> GetId(int id);  
+        public Task<IEnumerable<Room>> GetOccupied();
     }
 }
